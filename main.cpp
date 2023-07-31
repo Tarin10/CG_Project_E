@@ -3,76 +3,6 @@
 #include<math.h>>
 # define PI           3.14159265358979323846
 
-GLfloat position = 0.0f;
-GLfloat position2 = 0.0f;
-GLfloat speed = 0.1f;
-
-void update(int value)
-{
-/*  if(position > 1.0)
-        position = -1.0f;
-
-    position += speed;
-	glutPostRedisplay();
-*/
-
-
-    if(position < -1.0)
-            position = 1.0f;
-
-    position -= speed;
-	glutPostRedisplay();
-	glutTimerFunc(100, update, 0);
-}
-
-
-
-void update2(int value)
-{
-/*
-    if(position > 1.0)
-        position = -1.0f;
-
-    position += speed;
-	glutPostRedisplay();
-*/
-
-    if(position > 1.0)
-            position = -1.0f;
-
-    position += speed;
-	glutPostRedisplay();
-	glutTimerFunc(100, update2, 0);
-}
-
-void SpecialInput(int key, int x, int y)
-{
-    switch(key)
-    {
-        case GLUT_KEY_UP:
-        //do something here
-            glutTimerFunc(100, update2, 0);
-            break;
-
-        case GLUT_KEY_DOWN:
-        //do something here
-        // position2 -= speed;
-        //position -= speed;
-            glutTimerFunc(100, update, 0);
-            break;
-
-        case GLUT_KEY_LEFT:
-            speed =0.0f;
-            //do something here
-            break;
-
-        case GLUT_KEY_RIGHT:
-            //do something here
-            break;
-    }
-    glutPostRedisplay();
-}
-
 
 
 /* Handler for window-repaint event. Call back when the window first appears and
@@ -318,9 +248,6 @@ void display() {
 
 	///try 1st part
 
-	  glPushMatrix();
-        glTranslatef(position,position2, 0.0f);
-        //glTranslatef(0.0f,position, 0.0f);
 
 	 ///circle 9
 	int i8;
@@ -588,7 +515,113 @@ void display() {
 		}
 	glEnd();
 
-	  glPopMatrix();
+	///eyes
+	int i21;
+
+	GLfloat x21=0.8f; GLfloat y21=0.45f; GLfloat radius21 =.01f;
+	int triangleAmount21 = 100; //# of lines used to draw circle
+
+	//GLfloat radius = 0.8f; //radius
+	GLfloat twicePi21 = 2.0f * PI;
+
+	glColor3f(0.0f, 0.0f, 0.0f);
+	glBegin(GL_TRIANGLE_FAN);
+		glVertex2f(x21, y21); // center of circle
+		for(i21 = 0; i21 <= triangleAmount21;i21++) {
+			glVertex2f( x21 + (radius21 * cos(i21 *  twicePi21/ triangleAmount21)),
+                        y21 + (radius21 * sin(i21 * twicePi21 / triangleAmount21)) );
+		}
+	glEnd();
+
+	int i22;
+
+	GLfloat x22=0.85f; GLfloat y22=0.45f; GLfloat radius22 =.01f;
+	int triangleAmount22 = 100; //# of lines used to draw circle
+
+	//GLfloat radius = 0.8f; //radius
+	GLfloat twicePi22 = 2.0f * PI;
+
+	glColor3f(0.0f, 0.0f, 0.0f);
+	glBegin(GL_TRIANGLE_FAN);
+		glVertex2f(x22, y22); // center of circle
+		for(i22 = 0; i22 <= triangleAmount22;i22++) {
+			glVertex2f( x22 + (radius22 * cos(i22 *  twicePi22/ triangleAmount22)),
+                        y22 + (radius22 * sin(i22 * twicePi22 / triangleAmount22)) );
+		}
+	glEnd();
+
+///retina
+	int i23;
+
+	GLfloat x23=0.8f; GLfloat y23=0.447f; GLfloat radius23 =.002f;
+	int triangleAmount23 = 100; //# of lines used to draw circle
+
+	//GLfloat radius = 0.8f; //radius
+	GLfloat twicePi23 = 2.0f * PI;
+
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glBegin(GL_TRIANGLE_FAN);
+		glVertex2f(x23, y23); // center of circle
+		for(i23 = 0; i23 <= triangleAmount23;i23++) {
+			glVertex2f( x23 + (radius23 * cos(i23 *  twicePi23/ triangleAmount23)),
+                        y23 + (radius23 * sin(i23 * twicePi23 / triangleAmount23)) );
+		}
+	glEnd();
+
+	int i24;
+
+	GLfloat x24=0.85f; GLfloat y24=0.447f; GLfloat radius24 =.002f;
+	int triangleAmount24 = 100; //# of lines used to draw circle
+
+	//GLfloat radius = 0.8f; //radius
+	GLfloat twicePi24 = 2.0f * PI;
+
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glBegin(GL_TRIANGLE_FAN);
+		glVertex2f(x24, y24); // center of circle
+		for(i24 = 0; i24 <= triangleAmount24;i24++) {
+			glVertex2f( x24 + (radius24 * cos(i24 *  twicePi24/ triangleAmount24)),
+                        y24 + (radius24 * sin(i24 * twicePi24 / triangleAmount24)) );
+		}
+	glEnd();
+
+	///mouth
+	int i25;
+
+	GLfloat x25=0.825; GLfloat y25=0.42f; GLfloat radius25 =.004f;
+	int triangleAmount25 = 100; //# of lines used to draw circle
+
+	//GLfloat radius = 0.8f; //radius
+	GLfloat twicePi25 = 2.0f * PI;
+
+	glColor3f(0.0f, 0.0f, 0.0f);
+	glBegin(GL_TRIANGLE_FAN);
+		glVertex2f(x25, y25); // center of circle
+		for(i25 = 0; i25 <= triangleAmount25;i25++) {
+			glVertex2f( x25 + (radius25 * cos(i25 *  twicePi25/ triangleAmount25)),
+                        y25 + (radius25 * sin(i25 * twicePi25 / triangleAmount25)) );
+		}
+	glEnd();
+
+
+
+
+
+    glPointSize(2);
+    glBegin(GL_POINTS);
+    glColor3f(1.0f,1.0f,1.0f);
+    glVertex2f(0.10f, 0.90f);
+    glVertex2f(0.25f, 0.75f);
+    glVertex2f(0.35f, 0.99f);
+    glVertex2f(0.50f, 0.80f);
+    glVertex2f(0.90f, 0.90f);
+    glVertex2f(0.77f, 0.77f);
+    glVertex2f(0.67f, 0.95f);
+    glColor3f(0.0f,0.0f,0.0f);
+    glVertex2f(0.825f, 0.44f);
+
+    glEnd();
+
 
 
 
@@ -620,7 +653,7 @@ int main(int argc, char** argv) {
     glutCreateWindow("The Project: Rocket"); // Create a window with the given title
 
     init();
-     glutSpecialFunc(SpecialInput);
+
     glutDisplayFunc(display); // Register display callback handler for window re-paint
     glutMainLoop(); // Enter the event-processing loop
     return 0;
